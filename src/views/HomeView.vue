@@ -7,7 +7,7 @@
       </div>
     </div>
     <div v-else>
-      <p>Yapilacaklar yok</p>
+      <p class="mt-5">Yapilacaklar yok</p>
     </div>
   </div>
 </template>
@@ -21,7 +21,6 @@ const yapilacaklar = ref([]);
 const aktifSekme = ref("hepsi");
 
 const fetchData = () => {
-  // Yapılacakları local storage'dan al
   yapilacaklar.value = JSON.parse(localStorage.getItem("yapilacaklar")) || [];
 };
 
@@ -29,7 +28,7 @@ const silHandle = (id) => {
   let yapilacaklar = JSON.parse(localStorage.getItem("yapilacaklar")) || [];
   yapilacaklar = yapilacaklar.filter((yap) => yap.id !== id);
   localStorage.setItem("yapilacaklar", JSON.stringify(yapilacaklar));
-  fetchData(); // Güncel listeyi yeniden yükle
+  fetchData();
 };
 
 const yapildiHandle = (id) => {
@@ -38,7 +37,7 @@ const yapildiHandle = (id) => {
   if (yap) {
     yap.yapildi = !yap.yapildi;
     localStorage.setItem("yapilacaklar", JSON.stringify(yapilacaklar));
-    fetchData(); // Güncel listeyi yeniden yükle
+    fetchData();
   }
 };
 
